@@ -1,15 +1,15 @@
 import './Burger.css'
+import React from "react";
+import type {TypeIngredient} from "../../types";
 
-interface Ingredient {
+interface IngredientBurger {
     name: string;
     count: number;
 }
 
 interface Props {
-    ingredients: Ingredient[]
+    ingredients: IngredientBurger[]
 }
-
-type TypeIngredient = 'Meat' | 'Cheese' | 'Bacon' | 'Salad'
 
 const Burger: React.FC<Props> = ({ingredients}) => {
     const IngredientsArray: TypeIngredient[] = ingredients.reduce((acc: TypeIngredient[], ingredient) => {

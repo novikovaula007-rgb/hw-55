@@ -9,7 +9,7 @@ interface Props {
     del: MouseEventHandler;
 }
 
-const Ingredient: React.FC<Props> = ({name, image, count, add, del}) => {
+const IngredientComponent: React.FC<Props> = ({name, image, count, add, del}) => {
     return (
         <div>
             <ButtonAdd add={add} image={image} name={name}/>
@@ -19,4 +19,4 @@ const Ingredient: React.FC<Props> = ({name, image, count, add, del}) => {
     );
 };
 
-export default Ingredient;
+export default IngredientComponent;
