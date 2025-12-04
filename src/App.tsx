@@ -6,15 +6,14 @@ import './App.css';
 import type {TypeIngredient, IngredientBurger} from "./types";
 import TotalPrice from "./components/TotalPrice/TotalPrice.tsx";
 
-function App() {
-  const [ingredients, setIngredients] = useState<IngredientBurger[]>([
-    {name: 'Meat', count: 0},
-    {name: 'Cheese', count: 0},
-    {name: 'Bacon', count: 0},
-    {name: 'Salad', count: 0}
-  ]);
+const initialPrice = 30
+const initialIngredients: IngredientBurger[] = INGREDIENTS.map(ingredient => {
+  return {name: ingredient.name, count: 0}
+})
 
-  const [totalPrice, setTotalPrice] = useState(30)
+function App() {
+  const [ingredients, setIngredients] = useState<IngredientBurger[]>(initialIngredients);
+  const [totalPrice, setTotalPrice] = useState(initialPrice)
 
   const getIngredient = (ingredientName: TypeIngredient) => {
     return ingredients.findIndex(ingredient => ingredient.name === ingredientName)
@@ -23,14 +22,15 @@ function App() {
   const updateIngredient = (ingredientName: TypeIngredient, price: number, updateCount: number) => {
     const ingredientIndex = getIngredient(ingredientName)
 
-    setIngredients(ingredients.map((ingredient, index) => {
+    const newIngredients = ingredients.map((ingredient, index) => {
       if (index === ingredientIndex) {
         return {...ingredient, count: ingredient.count + updateCount}
       } else {
         return ingredient
       }
-    }))
+    })
 
+    setIngredients(newIngredients)
     setTotalPrice(prevTotalPrice => prevTotalPrice + price)
   }
 

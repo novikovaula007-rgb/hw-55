@@ -18,7 +18,7 @@ const IngredientComponent: React.FC<Props> = ({name, image, count, add, del}) =>
             <div className=''></div>
             <div className='countWrapper'>
                 <span>{count}</span>
-                <ButtonDel del={del}/>
+                {count > 0 && <ButtonDel del={del}/>}
             </div>
         </div>
     );
