@@ -1,4 +1,5 @@
 import React from 'react';
+import './ButtonAdd.css';
 
 interface Props {
     name: string;
@@ -8,10 +9,12 @@ interface Props {
 
 const ButtonAdd: React.FC<Props> = ({name, image, add}) => {
     return (
-        <button type="button" onClick={add}>
-            <img alt={name} src={image}/>
+        <div className='buttonWrapper'>
+            <button type="button" onClick={add} className='buttonAdd'>
+                <img alt={name} src={image} className='buttonImage'/>
+            </button>
             <span>{name}</span>
-        </button>
+        </div>
     );
 };
 

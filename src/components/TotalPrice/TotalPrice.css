@@ -1,0 +1,7 @@
+.priceBlock {
+    align-self: self-start;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #bcbcbc;
+    font-size: 20px;
+}

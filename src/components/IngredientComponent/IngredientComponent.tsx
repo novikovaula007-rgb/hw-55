@@ -1,5 +1,7 @@
 import React, {type MouseEventHandler} from 'react';
 import ButtonAdd from "./ButtonAdd/ButtonAdd.tsx";
+import ButtonDel from "./ButtonDel/ButtonDel.tsx"
+import './IngredientComponent.css'
 
 interface Props {
     name: string;
@@ -11,10 +13,13 @@ interface Props {
 
 const IngredientComponent: React.FC<Props> = ({name, image, count, add, del}) => {
     return (
-        <div>
+        <div className='ingredientBlock'>
             <ButtonAdd add={add} image={image} name={name}/>
-            <span>x{count}</span>
-            <button onClick={del}>удалить</button>
+            <div className=''></div>
+            <div className='countWrapper'>
+                <span>{count}</span>
+                <ButtonDel del={del}/>
+            </div>
         </div>
     );
 };

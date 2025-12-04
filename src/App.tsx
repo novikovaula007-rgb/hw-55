@@ -2,7 +2,9 @@ import Burger from "./components/Burger/Burger.tsx";
 import {useState} from "react";
 import IngredientComponent from "./components/IngredientComponent/IngredientComponent.tsx";
 import {INGREDIENTS} from "./globalConstants.ts";
+import './App.css';
 import type {TypeIngredient, IngredientBurger} from "./types";
+import TotalPrice from "./components/TotalPrice/TotalPrice.tsx";
 
 function App() {
   const [ingredients, setIngredients] = useState<IngredientBurger[]>([
@@ -44,8 +46,8 @@ function App() {
 
   return (
     <>
-      <div className='BurgerPage'>
-        <div className='IngredientsBlock'>
+      <div className='burgerPage'>
+        <div className='ingredientsBlock'>
           {INGREDIENTS.map((ingredient, index) => {
             const ingredientCopy = ingredients[getIngredient(ingredient.name)]
             return <IngredientComponent key={index}
@@ -57,10 +59,10 @@ function App() {
             />
           })}
         </div>
-        <div className='BurgerBlock'>
+        <div className='burgerBlock'>
           <Burger ingredients={ingredients}/>
         </div>
-        <span>total: {totalPrice}</span>
+        <TotalPrice price={totalPrice}/>
       </div>
     </>
   )

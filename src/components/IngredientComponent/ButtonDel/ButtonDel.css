@@ -1,0 +1,6 @@
+.buttonDel {
+    background: url("src/assets/delete_button.png") no-repeat center center / cover;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
