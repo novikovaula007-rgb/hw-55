@@ -6,41 +6,41 @@ import './App.css';
 import type {TypeIngredient, IngredientBurger} from "./types";
 import TotalPrice from "./components/TotalPrice/TotalPrice.tsx";
 
-const initialPrice = 30
+const initialPrice = 30;
 const initialIngredients: IngredientBurger[] = INGREDIENTS.map(ingredient => {
-  return {name: ingredient.name, count: 0}
-})
+  return {name: ingredient.name, count: 0};
+});
 
 function App() {
   const [ingredients, setIngredients] = useState<IngredientBurger[]>(initialIngredients);
-  const [totalPrice, setTotalPrice] = useState(initialPrice)
+  const [totalPrice, setTotalPrice] = useState(initialPrice);
 
   const getIngredient = (ingredientName: TypeIngredient) => {
-    return ingredients.findIndex(ingredient => ingredient.name === ingredientName)
+    return ingredients.findIndex(ingredient => ingredient.name === ingredientName);
   }
 
   const updateIngredient = (ingredientName: TypeIngredient, price: number, updateCount: number) => {
-    const ingredientIndex = getIngredient(ingredientName)
+    const ingredientIndex = getIngredient(ingredientName);
 
     const newIngredients = ingredients.map((ingredient, index) => {
       if (index === ingredientIndex) {
-        return {...ingredient, count: ingredient.count + updateCount}
+        return {...ingredient, count: ingredient.count + updateCount};
       } else {
-        return ingredient
+        return ingredient;
       }
-    })
+    });
 
-    setIngredients(newIngredients)
-    setTotalPrice(prevTotalPrice => prevTotalPrice + price)
+    setIngredients(newIngredients);
+    setTotalPrice(prevTotalPrice => prevTotalPrice + price);
   }
 
   const addIngredient = (ingredientName: TypeIngredient, price: number) => {
-    updateIngredient(ingredientName, price, 1)
+    updateIngredient(ingredientName, price, 1);
   }
 
   const delIngredient = (ingredientName: TypeIngredient, price: number) => {
     if (ingredients[getIngredient(ingredientName)].count > 0) {
-      updateIngredient(ingredientName, price * -1, -1)
+      updateIngredient(ingredientName, price * -1, -1);
     }
   }
 
@@ -49,7 +49,7 @@ function App() {
       <div className='burgerPage'>
         <div className='ingredientsBlock'>
           {INGREDIENTS.map((ingredient, index) => {
-            const ingredientCopy = ingredients[getIngredient(ingredient.name)]
+            const ingredientCopy = ingredients[getIngredient(ingredient.name)];
             return <IngredientComponent key={index}
                                         name={ingredient.name}
                                         image={ingredient.image}

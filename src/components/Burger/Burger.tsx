@@ -4,13 +4,13 @@ import type {TypeIngredient} from "../../types";
 import type {IngredientBurger} from "../../types";
 
 interface Props {
-    ingredients: IngredientBurger[]
+    ingredients: IngredientBurger[];
 }
 
 const Burger: React.FC<Props> = ({ingredients}) => {
     const IngredientsArray: TypeIngredient[] = ingredients.reduce((acc: TypeIngredient[], ingredient) => {
-        const newIngredients: TypeIngredient[] = Array(ingredient.count).fill(ingredient.name)
-        return acc.concat(newIngredients)
+        const newIngredients: TypeIngredient[] = Array(ingredient.count).fill(ingredient.name);
+        return acc.concat(newIngredients);
     }, [])
 
     return (

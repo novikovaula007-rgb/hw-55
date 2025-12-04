@@ -4,7 +4,7 @@ import './ButtonAdd.css';
 interface Props {
     name: string;
     image: string;
-    add: React.MouseEventHandler
+    add: React.MouseEventHandler;
 }
 
 const ButtonAdd: React.FC<Props> = ({name, image, add}) => {
