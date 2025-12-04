@@ -4,7 +4,7 @@ import ButtonAdd from "./ButtonAdd/ButtonAdd.tsx";
 interface Props {
     name: string;
     image: string;
-    count: string;
+    count: number;
     add: MouseEventHandler;
     del: MouseEventHandler;
 }

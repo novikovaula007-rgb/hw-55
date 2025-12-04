@@ -6,3 +6,7 @@ export interface IngredientInterface {
     image: string;
 }
 
+export interface IngredientBurger {
+    name: TypeIngredient;
+    count: number;
+}

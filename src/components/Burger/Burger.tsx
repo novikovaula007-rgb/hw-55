@@ -1,11 +1,7 @@
 import './Burger.css'
 import React from "react";
 import type {TypeIngredient} from "../../types";
-
-interface IngredientBurger {
-    name: string;
-    count: number;
-}
+import type {IngredientBurger} from "../../types";
 
 interface Props {
     ingredients: IngredientBurger[]
