@@ -1,4 +1,3 @@
-
 import Burger from "./components/Burger/Burger.tsx";
 import {useState} from "react";
 import IngredientComponent from "./components/IngredientComponent/IngredientComponent.tsx";
@@ -16,22 +15,30 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(30)
 
   const getIngredient = (ingredientName: TypeIngredient) => {
-    const ingredientsIndex = ingredients.findIndex(ingredient => ingredient.name === ingredientName)
-    return ingredients[ingredientsIndex]
+    return ingredients.findIndex(ingredient => ingredient.name === ingredientName)
+  }
+
+  const updateIngredient = (ingredientName: TypeIngredient, price: number, updateCount: number) => {
+    const ingredientIndex = getIngredient(ingredientName)
+
+    setIngredients(ingredients.map((ingredient, index) => {
+      if (index === ingredientIndex) {
+        return {...ingredient, count: ingredient.count + updateCount}
+      } else {
+        return ingredient
+      }
+    }))
+
+    setTotalPrice(prevTotalPrice => prevTotalPrice + price)
   }
 
   const addIngredient = (ingredientName: TypeIngredient, price: number) => {
-    const ingredientCopy = getIngredient(ingredientName)
-
-    setTotalPrice(prevTotalPrice => prevTotalPrice + price)
-    setIngredients([...ingredients, {...ingredientCopy, count: ingredientCopy.count + 1}])
+    updateIngredient(ingredientName, price, 1)
   }
 
   const delIngredient = (ingredientName: TypeIngredient, price: number) => {
-    const ingredientCopy = getIngredient(ingredientName)
-    setTotalPrice(prevTotalPrice => prevTotalPrice + price)
-    if (ingredientCopy.count > 0) {
-      setIngredients([...ingredients, {...ingredientCopy, count: ingredientCopy.count - 1}])
+    if (ingredients[getIngredient(ingredientName)].count > 0) {
+      updateIngredient(ingredientName, price * -1, -1)
     }
   }
 
@@ -40,7 +47,7 @@ function App() {
       <div className='BurgerPage'>
         <div className='IngredientsBlock'>
           {INGREDIENTS.map((ingredient, index) => {
-            const ingredientCopy = getIngredient(ingredient.name)
+            const ingredientCopy = ingredients[getIngredient(ingredient.name)]
             return <IngredientComponent key={index}
                                         name={ingredient.name}
                                         image={ingredient.image}
